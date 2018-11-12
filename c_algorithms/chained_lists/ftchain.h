@@ -6,14 +6,16 @@
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:09:02 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 17:26:03 by mndhlovu         ###   ########.fr       */
+/*   Updated: 2018/11/12 16:59:26 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FTCHAIN_H
 # define FTCHAIN_H
-# include <string.h>
+# include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+
 struct				node
 {
 	int				data;
