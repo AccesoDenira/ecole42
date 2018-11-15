@@ -6,40 +6,31 @@
 #    By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 16:48:32 by mndhlovu          #+#    #+#              #
-#    Updated: 2018/11/12 20:13:47 by mndhlovu         ###   ########.fr        #
+#    Updated: 2018/11/15 13:48:59 by mndhlovu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-HEADER = ./includes/
-SRC_C = ./src_libc/ft_memset.c ./src_libc/ft_bzero.c ./src_libc/ft_memcpy.c \
-        ./src_libc/ft_memccpy.c ./src_libc/ft_memmove.c ./src_libc/ft_memchr.c \
-		./src_libc/ft_memcmp.c ./src_libc/ft_strlen.c ./src_libc/ft_strdup.c \
-		./src_libc/ft_strcpy.c ./src_libc/ft_strncpy.c ./src_libc/ft_strcat.c \
-		./src_libc/ft_strncat.c ./src_libc/ft_strlcat.c ./src_libc/ft_strchr.c \
-		./src_libc/ft_strrchr.c ./src_libc/ft_strstr.c ./src_libc/ft_strnstr.c \
-		./src_libc/ft_strcmp.c ./src_libc/ft_strncmp.c ./src_libc/ft_atoi.c \
-		./src_libc/ft_isalpha.c ./src_libc/ft_isdigit.c ./src_libc/ft_isalnum.c \
-		./src_libc/ft_isascii.c ./src_Libc/ft_isprint.c ./src_libc/ft_tolower.c \
-		./src_libc/ft_toupper.c
-
-SRC_A = ./src_adt/ft_memalloc.c ./src_adt/ft_memdel.c ./src_adt/ft_strnew.c \
-		./src_adt/ft_strdel.c ./src_adt/ft_strclr.c ./src_adt/ft_striter.c \
-		./src_adt/ft_striteri.c ./src_adt/ft_strmap.c ./src_adt/ft_strmapi.c \
-		./src_adt/ft_strequ.c ./src_adt/ft_strenqu.c ./src_adt/ft_strsub.c \
-		./src_adt/ft_strjoin.c ./src_adt/ft_strtrim.c ./src_adt/ft_strsplit.c \
-		./src_adt/ft_itoa.c ./src_adt/ft_putchar.c ./src_adt/ft_putchar_fd.c \
-		./src_adt/ft_putstr.c ./src_adt/ft_putstr_fd.c ./src_adt/ft_putnbr.c \
-		./src_adt/ft_putnbr_fd.c ./src_adt/ft_putendl.c ./src_adt/ft_putendl_fd.c 
-SRC_B = ./src_bon/ft_lstnew.c ./src_bon/ft_lstdelone.c ./src_bon/ft_lstdel.c \
-		./src_bon/ft_lstadd.c ./src_bon/ft_lstiter.c ./src_bon/ft_lstmap.c
+HEADER = libft.h
+SRC_C = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
+		ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
+		ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
+	   	ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
+	   	ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+	   	ft_isprint.c ft_tolower.c ft_toupper.c ft_memalloc.c ft_memdel.c \
+		ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c \
+	   	ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c \
+		ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c ft_putchar.c \
+		ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c ft_putnbr.c ft_putnbr_fd.c \
+		ft_putendl.c ft_putendl_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
+		ft_lstadd.c ft_lstiter.c ft_lstmap.c
 
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME):
-		gcc $(FLAGS) -I $(HEADER) -c $(SRC_C) $(SRC_A) $(SRC_B)
+		gcc $(FLAGS) -I $(HEADER) -c $(SRC_C)
 		ar rc $(NAME) *.o
 		ranlib $(NAME)
 
@@ -48,3 +39,5 @@ clean:
 
 fclean: clean
 		rm -f $(NAME)
+
+re: fclean all
