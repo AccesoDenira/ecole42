@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/09 14:27:48 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 17:35:20 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_list		*new;
-	t_list		*list;
+	unsigned int		index;
+	char				*str;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	index = 0;
+	if (!s || !f)
+		return (0);
+	str = ft_strnew(ft_strlen(s));
+	if (!str)
+		return (0);
+	while (s[index])
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		str[index] = f(index, s[index]);
+		index++;
 	}
-	return (new);
+	return (str);
 }

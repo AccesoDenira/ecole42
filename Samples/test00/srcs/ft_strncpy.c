@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 15:51:25 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 11:27:25 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char		*ft_strncpy(char *dest, const char *src, size_t len)
 {
-	t_list		*new;
-	t_list		*list;
+	size_t		index;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	index = 0;
+	while (index < len && src[index] != '\0')
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		dest[index] = src[index];
+		index++;
 	}
-	return (new);
+	if (index != len && !src[index])
+	{
+		while (index < len)
+		{
+			dest[index] = '\0';
+			index++;
+		}
+	}
+	return (dest);
 }

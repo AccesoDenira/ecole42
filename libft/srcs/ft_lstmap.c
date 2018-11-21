@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/12 18:52:38 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/12 19:38:39 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list		*new;
 	t_list		*list;
 
-	if (!lst)
+	if(!lst)
 		return (NULL);
 	list = f(lst);
-	new = list;
+	new  = list;
 	while (lst->next)
 	{
 		lst = lst->next;

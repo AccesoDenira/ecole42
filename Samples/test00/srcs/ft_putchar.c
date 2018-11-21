@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/09 15:44:28 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 15:45:00 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void	ft_putchar(char c)
 {
-	t_list		*new;
-	t_list		*list;
-
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
-	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
-	}
-	return (new);
+	write(1, &c, 1);
 }

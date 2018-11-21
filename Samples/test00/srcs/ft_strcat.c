@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 16:06:49 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 11:28:46 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char		*ft_strcat(char *s1, const char *s2)
 {
-	t_list		*new;
-	t_list		*list;
+	size_t		index;
+	size_t		len;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	index = 0;
+	len = ft_strlen(s1);
+	while (s2[index] != '\0')
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		s1[len] = s2[index];
+		index++;
+		len++;
 	}
-	return (new);
+	s1[len] = '\0';
+	return (s1);
 }

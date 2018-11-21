@@ -6,15 +6,15 @@
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:45:55 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:16:49 by mndhlovu         ###   ########.fr       */
+/*   Updated: 2018/11/09 16:47:45 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t			ft_length(int n)
+static size_t	ft_length(int n)
 {
-	size_t				i;
+	size_t	i;
 
 	i = 1;
 	while (n /= 10)

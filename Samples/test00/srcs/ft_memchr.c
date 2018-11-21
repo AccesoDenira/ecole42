@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 14:28:41 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 18:57:05 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void		*ft_memchr(const void *s, int c, size_t n)
 {
-	t_list		*new;
-	t_list		*list;
+	const unsigned char			*tmp;
+	unsigned char				ltr;
+	size_t						index;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	tmp = (unsigned char*)s;
+	ltr = (unsigned char)c;
+	index = 0;
+	if (!s)
+		return (0);
+	while (index < n)
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		if (*tmp == ltr)
+			return ((void*)tmp);
+		index++;
+		tmp++;
 	}
-	return (new);
+	return (NULL);
 }

@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 13:56:26 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 11:06:24 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void		*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	t_list		*new;
-	t_list		*list;
+	char		*d;
+	char		*s;
+	char		ltr;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	ltr = (char)c;
+	d = (char*)dest;
+	s = (char*)src;
+	if (s && d)
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
+		while (n != 0 && *s != ltr)
 		{
-			free(list->next);
-			return (NULL);
+			*d = *s;
+			d++;
+			s++;
+			n--;
 		}
-		list = list->next;
+		if (*s == ltr)
+		{
+			*d = *s;
+			return ((void*)++d);
+		}
 	}
-	return (new);
+	return (NULL);
 }

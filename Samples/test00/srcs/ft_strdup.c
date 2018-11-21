@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 15:21:32 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 11:24:02 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char		*ft_strdup(const char *s1)
 {
-	t_list		*new;
-	t_list		*list;
+	char	*s2;
+	size_t	index;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	index = 0;
+	s2 = (char*)malloc(sizeof(*s2) * ft_strlen(s1) + 1);
+	if (!s2)
+		return (0);
+	while (s1[index] != '\0')
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		s2[index] = s1[index];
+		index++;
 	}
-	return (new);
+	s2[index] = '\0';
+	return (0);
 }

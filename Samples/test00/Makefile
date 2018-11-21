@@ -6,7 +6,7 @@
 #    By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 16:48:32 by mndhlovu          #+#    #+#              #
-#    Updated: 2018/11/12 19:41:10 by mndhlovu         ###   ########.fr        #
+#    Updated: 2018/11/09 19:15:09 by mndhlovu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,14 @@ SRC_A = ./srcs/ft_memalloc.c ./srcs/ft_memdel.c ./srcs/ft_strnew.c \
 		./srcs/ft_strjoin.c ./srcs/ft_strtrim.c ./srcs/ft_strsplit.c \
 		./srcs/ft_itoa.c ./srcs/ft_putchar.c ./srcs/ft_putchar_fd.c \
 		./srcs/ft_putstr.c ./srcs/ft_putstr_fd.c ./srcs/ft_putnbr.c \
-		./srcs/ft_putnbr_fd.c ./srcs/ft_putendl.c ./srcs/ft_putendl_fd.c 
-SRC_B = ./srcs/ft_lstnew.c ./srcs/ft_lstdelone.c ./srcs/ft_lstdel.c \
-		./srcs/ft_lstadd.c ./srcs/ft_lstiter.c ./srcs/ft_lstmap.c
+		./srcs/ft_putnbr_fd.c ./srcs/ft_putendl.c ./srcs/ft_putendl_fd.c \
 
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME):
-		gcc $(FLAGS) -I $(HEADER) -c $(SRC_C) $(SRC_A) $(SRC_B)
+		gcc $(FLAGS) -I $(HEADER) -c $(SRC_C) $(SRC_A)
 		ar rc $(NAME) *.o
 		ranlib $(NAME)
 

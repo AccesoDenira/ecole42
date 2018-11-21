@@ -5,44 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 15:43:22 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/14 14:25:29 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/09 16:29:18 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 18:22:27 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-static int	ft_is_blank(char c)
+char	*ft_strtrim(char const *s)
 {
-	return (c == ' ' || c == '\t' || c == '\n');
-}
-
-char		*ft_strtrim(char const *s)
-{
-	char	*new_str;
-	size_t	i;
+	char	*str;
+	size_t	index;
 	size_t	len;
 
 	if (s)
 	{
 		len = ft_strlen(s) - 1;
-		i = 0;
-		while (ft_is_blank(s[i]) && s[i])
-			i++;
-		if (!s[i])
+		index = 0;
+		while (ft_isspace(s[index]) && s[index])
+			index++;
+		if (!s[index])
 			return (ft_strnew(1));
-		while (len != i && ft_is_blank(s[len]))
+		while (len != index && ft_isspace(s[len]))
 			len--;
-		if (!i && len = ft_strlen(s) - 1)
+		if (!index && len == ft_strlen(s) - 1)
 		{
-			new_str = ft_strsub(s, 0, ft_strlen(s));
-			return (new_str);
+			str = ft_strsub(s, 0, ft_strlen(s));
+			return (str);
 		}
-		new_str = ft_strsub(s, i, len - i + 1);
-		if (!new_str)
+		str = ft_strsub(s, index, len - index + 1);
+		if (!str)
 			return (NULL);
-		return (new_str);
+		return (str);
 	}
 	return (NULL);
 }

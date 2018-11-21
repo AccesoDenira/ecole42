@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/09 15:38:08 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 15:42:44 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list		*new;
-	t_list		*list;
+	char	*str;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	str = NULL;
+	if (s1 && s2)
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
+		if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
 			return (NULL);
-		}
-		list = list->next;
+		ft_strcpy(str, s1);
+		ft_strcat(str, s2);
 	}
-	return (new);
+	return (str);
 }

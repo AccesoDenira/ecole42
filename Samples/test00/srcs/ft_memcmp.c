@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mndhlovu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 19:31:45 by mndhlovu          #+#    #+#             */
-/*   Updated: 2018/11/12 20:29:14 by mndhlovu         ###   ########.fr       */
+/*   Created: 2018/11/07 14:19:44 by mndhlovu          #+#    #+#             */
+/*   Updated: 2018/11/09 11:21:26 by mndhlovu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_list		*new;
-	t_list		*list;
+	const unsigned char		*ptr1;
+	const unsigned char		*ptr2;
 
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	ptr1 = (const unsigned char*)s1;
+	ptr2 = (const unsigned char*)s2;
+	while (n)
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
+		if (*ptr1 != *ptr2)
+			return ((int)(*ptr1 - *ptr2));
+		n--;
+		ptr1++;
+		ptr2++;
 	}
-	return (new);
+	return (0);
 }
