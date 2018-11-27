@@ -17,7 +17,6 @@ static int			ft_verify_line(char **stack, char **line)
 	char			*tmp_stk;
 	char			*strc_stk;
 	int				index;
-	char			*temp;
 
 	index = 0;
 	strc_stk = *stack;
@@ -27,9 +26,8 @@ static int			ft_verify_line(char **stack, char **line)
 	tmp_stk = &strc_stk[index];
 	*tmp_stk = '\0';
 	*line = ft_strdup(*stack);
-	temp = *stack;
-	free(temp);
 	*stack = ft_strdup(tmp_stk + 1);
+    free(strc_stk);
 	return (1);
 }
 
@@ -44,6 +42,7 @@ static int			ft_read_file(int fd, char *heap, char **stack, char **line)
 		if (*stack)
 		{
 			tmp_stk = *stack;
+            //free(*stack);
 			if (!(*stack = ft_strjoin(tmp_stk, heap)))
 				return (-1);
 			ft_strdel(&tmp_stk);
